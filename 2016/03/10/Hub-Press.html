@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>HubPress</title>
+    <meta name="description" content="" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="shortcut icon" href="//innovation-yagasaki.github.io/themes/ichi/favicon.ico">
+
+    <script type="text/javascript" src="//innovation-yagasaki.github.io/themes/ichi/assets/js/vendor/fastclick.js?v=1.0.0"></script>
+    <script type="text/javascript" src="//innovation-yagasaki.github.io/themes/ichi/assets/js/vendor/modernizr.js?v=1.0.0"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="//innovation-yagasaki.github.io/themes/ichi/assets/css/normalize.css?v=1.0.0" />
+    <link rel="stylesheet" type="text/css" href="//innovation-yagasaki.github.io/themes/ichi/assets/css/foundation.min.css?v=1.0.0" />
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" type="text/css" href="//innovation-yagasaki.github.io/themes/ichi/assets/css/outdatedBrowser.min.css?v=1.0.0">
+    <![endif]-->
+    <link rel="stylesheet" type="text/css" href="//innovation-yagasaki.github.io/themes/ichi/assets/fonts/foundation-icons/foundation-icons.css?v=1.0.0" />
+    <link rel="stylesheet" type="text/css" href="//innovation-yagasaki.github.io/themes/ichi/assets/css/styles.css?v=1.0.0" />
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans:300,700,400|Source+Sans+Pro:300,400,600,700,900,300italic,400italic,600italic,700italic,900italic" />
+
+    <link rel="canonical" href="https://innovation-yagasaki.github.io/2016/03/10/Hub-Press.html" />
+    
+    <meta property="og:site_name" content="" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="HubPress" />
+    <meta property="og:description" content="HubPress とはなにか？ HubPress は無料でブログを作るためのオープンソースツールです。AsciiDocで書けるすばらしいブログをGitHub Pagesを使って公開できます。 Anthonny Quérouil (twitter @anthonny_q) により作成・メンテナンスされています。 HubPress はまだ作成途中です。バグを発見した場合は是非教えてください。開発チームができる限りはやく対応します。 HubPressの更新が勢いに乗れば、それだけドキュメントも更新されます。 定期的にHubPressの更新を確認し、新しい機能..." />
+    <meta property="og:url" content="https://innovation-yagasaki.github.io/2016/03/10/Hub-Press.html" />
+    <meta property="article:published_time" content="2016-03-09T15:00:00.000Z" />
+    <meta property="article:modified_time" content="2016-03-10T07:27:25.047Z" />
+    
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="HubPress" />
+    <meta name="twitter:description" content="HubPress とはなにか？ HubPress は無料でブログを作るためのオープンソースツールです。AsciiDocで書けるすばらしいブログをGitHub Pagesを使って公開できます。 Anthonny Quérouil (twitter @anthonny_q) により作成・メンテナンスされています。 HubPress はまだ作成途中です。バグを発見した場合は是非教えてください。開発チームができる限りはやく対応します。 HubPressの更新が勢いに乗れば、それだけドキュメントも更新されます。 定期的にHubPressの更新を確認し、新しい機能..." />
+    <meta name="twitter:url" content="https://innovation-yagasaki.github.io/2016/03/10/Hub-Press.html" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "",
+    "author": {
+        "@type": "Person",
+        "name": null,
+        "image": "https://avatars.githubusercontent.com/u/13131599?v=3",
+        "url": "undefined/author/undefined",
+        "sameAs": null
+    },
+    "headline": "HubPress",
+    "url": "https://innovation-yagasaki.github.io/2016/03/10/Hub-Press.html",
+    "datePublished": "2016-03-09T15:00:00.000Z",
+    "dateModified": "2016-03-10T07:27:25.047Z",
+    "description": "HubPress とはなにか？ HubPress は無料でブログを作るためのオープンソースツールです。AsciiDocで書けるすばらしいブログをGitHub Pagesを使って公開できます。 Anthonny Quérouil (twitter @anthonny_q) により作成・メンテナンスされています。 HubPress はまだ作成途中です。バグを発見した場合は是非教えてください。開発チームができる限りはやく対応します。 HubPressの更新が勢いに乗れば、それだけドキュメントも更新されます。 定期的にHubPressの更新を確認し、新しい機能..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost ?" />
+    <link rel="alternate" type="application/rss+xml" title="" href="https://innovation-yagasaki.github.io/rss" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/default.min.css">
+</head>
+<body class="post-template">
+
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdate" href="http://outdatedbrowser.com/">Update my browser now</a></p>
+</div>
+
+<nav class="top-bar hide-for-large-up" data-topbar >
+  <ul class="title-area">
+    <li class="name">
+
+    </li>
+    <li class="home"><a class="fi-home" href="https://innovation-yagasaki.github.io"></a></li>
+    <li class="toggle-topbar"><a href="#" id="trigger-overlay" class="fi-list"></a></li>
+  </ul>
+
+<div class="overlay overlay-scale">
+    <button type="button" class="overlay-close">Close</button>
+    <nav>
+        <ul>
+            <li><a href="https://innovation-yagasaki.github.io">Home</a></li>
+        </ul>
+    </nav>
+</div>
+
+</nav>
+
+<div class="row">
+
+<div class="small-16 medium-16 large-4 columns right head-area" >
+
+<header class="site-head">
+    <div class="vertical">
+        <div class="site-head-content inner">
+            <ul class="side-nav blog-menu show-for-large-up">
+                <li><a class="fi-home" href="https://innovation-yagasaki.github.io"></a></li>
+                <li><a class="fi-torso" href="https://innovation-yagasaki.github.io/about"></a></li>
+                <li><a class="fi-mail" href="https://innovation-yagasaki.github.io/contact"></a></li>
+            </ul>
+            
+            <h1 class="blog-title"></h1>
+            <hr>
+            <p class="blog-description"></p>
+            <div class="blog-network">
+<!--                 <a href="#" class="fi-social-pinterest"></a>
+                <a href="#" class="fi-social-linkedin"></a>
+                <a href="#" class="fi-social-behance"></a>
+                <a href="#" class="fi-social-deviant-art"></a>
+                <a href="#" class="fi-social-dribbble"></a>
+                <a href="#" class="fi-social-flickr"></a>
+                <a href="#" class="fi-social-github"></a>
+                <a href="#" class="fi-social-skype"></a>
+                <a href="#" class="fi-social-snapchat"></a>
+                <a href="#" class="fi-social-steam"></a>
+                <a href="#" class="fi-social-xbox"></a>
+                <a href="#" class="fi-social-reddit"></a> -->
+            </div>
+        </div>
+    </div>
+</header>
+
+</div>
+
+
+<div class="small-16 medium-16 large-12 columns main-column left">
+    
+
+<main class="content" role="main">
+
+    <article class="post">
+
+
+            <h1 class="post-title">HubPress</h1>
+
+            <span class="post-meta label"><time datetime="2016-03-10">10 Mar 2016</time></span>
+
+            <section class="post-content">
+                <div class="sect1">
+<h2 id="_hubpress">HubPress とはなにか？</h2>
+<div class="sectionbody">
+<div class="imageblock">
+<div class="content">
+<img src="http://hubpress.io/img/editor.png" alt="editor.png">
+</div>
+</div>
+<div class="paragraph">
+<p>HubPress は無料でブログを作るためのオープンソースツールです。AsciiDocで書けるすばらしいブログをGitHub Pagesを使って公開できます。</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/anthonny">Anthonny Quérouil</a> (twitter <a href="https://twitter.com/anthonny_q">@anthonny_q</a>)
+により作成・メンテナンスされています。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+HubPress はまだ作成途中です。バグを発見した場合は是非教えてください。開発チームができる限りはやく対応します。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>HubPressの更新が勢いに乗れば、それだけドキュメントも更新されます。
+定期的にHubPressの更新を確認し、新しい機能・使い方を確認して下さい。
+バグ報告はいつでも歓迎です。もちろんプルリクエストは<strong>いつでも</strong>大歓迎です。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="__">対応ブラウザについて</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>HubPressは、デスクトップ版Chrome、デスクトップ版FireFox、そしてAndroid版Chromeで動作することを確認しています。</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_getting_started">Getting Started</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="___2">インストール</h3>
+<div class="sect3">
+<h4 id="___3">リポジトリのフォーク</h4>
+<div class="paragraph">
+<p>Fork アイコンをクリックして、自分の GitHub アカウントにリポジトリのコピーを作成してください。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_github_io">github.io ドメインの使用</h4>
+<div class="paragraph">
+<p>もしあなたがGitHub Pagesを利用したことがなければ、ここに記載の方法で
+簡単に HubPress をセットアップできます。
+ほんの数ステップで HubPress がデプロイされ利用可能になります。</p>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+「username.github.io ドメインを他プロジェクトで利用済みである」あるいは「独自ドメインで HubPress を利用したい」場合, 下記のステップは読み飛ばしてください。
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>リポジトリ名を <code>&lt;username&gt;.github.io</code> に変更</p>
+</li>
+<li>
+<p><code>hubpress/config.json</code> の設定</p>
+<div class="paragraph">
+<p><span class="image"><img src="http://hubpress.io/img/edit-config.png" alt="Edit config"></span></p>
+</div>
+<div class="paragraph">
+<p>なお、以下のパラメータは必須です。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>username</code>: GitHub のユーザー名です。</p>
+</li>
+<li>
+<p><code>repositoryName</code>: フォーク後のリポジトリの名前。 <code>&lt;username&gt;.github.io</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>変更をコミットし, <code><a href="https://&lt;username&gt;.github.io/" class="bare">https://&lt;username&gt;.github.io/</a></code> ドメインで GitHub Page を公開。</p>
+</li>
+<li>
+<p>以下のような画面が出れば、HubPressは正しくセットアップされています。</p>
+<div class="paragraph">
+<p><span class="image"><img src="http://hubpress.io/img/home-install.png" alt="Install complete" width="300"></span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect3">
+<h4 id="__username_github_io_hubpress">「username.github.io ドメインを他プロジェクトで利用済みである」あるいは「独自ドメインで HubPress を利用したい」場合</h4>
+<div class="paragraph">
+<p>やや多めに設定が必要です。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>リポジトリの設定からデフォルトのブランチを <code>gh-pages</code> に設定</p>
+<div class="paragraph">
+<p><span class="image"><img src="http://hubpress.io/img/settings-gh-pages.png" alt="Settings gh-pages" width="400"></span></p>
+</div>
+</li>
+<li>
+<p><strong>gh-pages</strong> ブランチに移動。</p>
+<div class="paragraph">
+<p><span class="image"><img src="http://hubpress.io/img/switch-gh-pages.png" alt="Install complete" width="300"></span></p>
+</div>
+</li>
+<li>
+<p><code>hubpress/config.json</code> の設定</p>
+<div class="paragraph">
+<p><span class="image"><img src="http://hubpress.io/img/edit-config-gh-pages.png" alt="Edit config"></span></p>
+</div>
+<div class="paragraph">
+<p>なお、以下のパラメータは必須です。</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>username</code>: GitHub のユーザー名です。</p>
+</li>
+<li>
+<p><code>repositoryName</code>: フォーク後のリポジトリの名前。特に変更していないなら <code>hubpress.io</code></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>変更をコミットし, <code><a href="https://&lt;username&gt;.github.io/&lt;repositoryName&gt;/" class="bare">https://&lt;username&gt;.github.io/&lt;repositoryName&gt;/</a></code> で GitHub Page を公開。</p>
+</li>
+<li>
+<p>以下のような画面が出れば、HubPressは正しくセットアップされています。</p>
+<div class="paragraph">
+<p><span class="image"><img src="http://hubpress.io/img/home-install.png" alt="Install complete" width="300"></span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="___4">管理画面</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>HubPressの管理画面は <strong>/hubpress</strong> からアクセスできます。つまり</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code><a href="https://&lt;username&gt;.github.io/hubpress/" class="bare">https://&lt;username&gt;.github.io/hubpress/</a></code> (github.ioドメインを利用している場合 )</p>
+</li>
+<li>
+<p><code><a href="https://&lt;username&gt;.github.io/&lt;repositoryName&gt;/hubpress/" class="bare">https://&lt;username&gt;.github.io/&lt;repositoryName&gt;/hubpress/</a></code> (Project Pageを利用している場合)</p>
+</li>
+<li>
+<p><code><a href="http://&lt;yourdomain&gt;/hubpress/" class="bare">http://&lt;yourdomain&gt;/hubpress/</a></code> (独自ドメインを使用している場合)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>です。</p>
+</div>
+<div class="sect2">
+<h3 id="___5">管理画面へのログイン</h3>
+<div class="paragraph">
+<p><span class="image"><img src="http://hubpress.io/img/login.png" alt="Install complete" width="300"></span></p>
+</div>
+<div class="paragraph">
+<p>GitHub のログイン情報でログインできます。</p>
+</div>
+<div class="paragraph">
+<p>一旦ログインすると、HubPress から GiHub API へコールするためのトークンが発行されます。</p>
+</div>
+<div class="paragraph">
+<p>このトークンは HubPress の全セッション間で共有されます。
+そのためPCで管理画面を開いた後、タブレット端末でも開いた場合は
+トークンはPC,タブレット両端末で使われます。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="___6">ページの設定</h3>
+<div class="paragraph">
+<p>CNAMEやページングといった、基本的なブログの設定が可能です。
+またあなたのソーシャルアカウントとブログを紐付けすることもできます。</p>
+</div>
+<div class="sect3">
+<h4 id="_meta">Meta</h4>
+<div class="paragraph">
+<p>この節は <code>/hubpress/config.json</code> ファイルで変更可能な基本情報についての説明を含みます。</p>
+</div>
+<div class="paragraph">
+<p><strong>Git CNAME</strong> を設定可能して独自ドメインの利用が可能です。
+詳しくは <a href="https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/" class="bare">https://help.github.com/articles/setting-up-a-custom-domain-with-github-pages/</a>
+を見てください。</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Live Preview Render Delayの項目について</dt>
+<dd>
+<p>ミリ秒単位で、ライブプレビューが描画を始める時間を設定できます。
+タイピングが早い人には、2000 (2秒) 以上の数値を入れることをオススメします。そうすると何度も頻繁にライブプレビューの描画をさせずに済むので、ブログの執筆がスムーズになるでしょう。2000(2秒)より少ない値を設定する場合は、ライブプレビューがはじまるのが早くなりますが、タイピングのカーソルに遅れなどが生じる可能性があります。</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_site">Site</h4>
+<div class="sect4">
+<h5 id="_title_description">Title と Description</h5>
+<div class="paragraph">
+<p><strong>Title</strong> や <strong>Description</strong> フィールドにより
+ブログタイトルや, その説明を設定することができます。</p>
+</div>
+<div class="paragraph">
+<p><strong>Logo</strong> や <strong>Cover Image</strong> フィールドには</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ホスティングサービス上の画像へのHTML リンク。 例. gravatar</p>
+</li>
+<li>
+<p>/images ディレクトリ内の画像へのリンク</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>が設定可能です。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+ブログへの画像の投稿については <code>/images/README.adoc</code> を参照してください。
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_theme">Theme</h5>
+<div class="paragraph">
+<p><code>/themes</code> ディレクトリの中にあるテーマ名を指定することで、ブログテーマを選択可能です。</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_google_analytics">Google Analytics</h5>
+<div class="paragraph">
+<p><strong>Google Analytics</strong> フィールドの設定により ブログサイトで Google Analytics を利用可能です。(例 : UA-1234567-1)</p>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_disqus_shortname">Disqus Shortname</h5>
+<div class="paragraph">
+<p><strong>Disqus shortname</strong>の項目はあたらしく用意したDisqus URL/shortname を入れることができます。shortnameだけでよいです。プロフィールページへのリンクは入れないでください。</p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_social_network">Social Network</h4>
+<div class="paragraph">
+<p>Social Network グループ内のフィールドには
+公開プロフィールページヘの URL を入力してください。
+ブログ上での表示方法はテーマの設定次第です。</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="___7">投稿の管理</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>はじめて HubPress を利用する際には <strong>Posts</strong> はまだありません。
+ブログに投稿をすると、左側に記事のリスト、右側にプレビューの形で表示されます。</p>
+</div>
+<div class="sect2">
+<h3 id="_hubpress_2">HubPressで記事を書く</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+もし AsciiDocに馴染みがなければ <a href="http://asciidoctor.org/docs/asciidoc-writers-guide/">AsciiDoctor Writer&#8217;s Guide</a> で勉強して下さい。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>HupPress エディタは左側に AsciiDoc のコード、右側にプレビューを表示します。</p>
+</div>
+<div class="sect3">
+<h4 id="_blog">Blog のタイトルとヘッダー</h4>
+<div class="paragraph">
+<p>記事のタイトルは常に AsciiDoc 投稿における Level 1 となります。
+つまり <code>= Blog Title</code> により 記事のタイトルを <code>Blog Title</code> に設定できます。</p>
+</div>
+<div class="paragraph">
+<p>記事の保存には <code>= Blog Title</code> が１つ必要です。</p>
+</div>
+<div class="paragraph">
+<p>もし 1st-level のヘッダーを使いたければ代わりに <code>== First Level Heading</code> を使ってください。
+ネストしたヘッダも同様です。</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_hubpress_3">HubPress パラメーター</h4>
+<div class="paragraph">
+<p>HubPress allows you to alter characteristics of each blog post using attributes.</p>
+</div>
+<div class="sect4">
+<h5 id="___8">カバー画像</h5>
+<div class="paragraph">
+<p>記事にカバー画像を追加したい場合 <code>hp-image</code> 属性を追加する必要があります。</p>
+</div>
+<div class="paragraph">
+<p>例:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-asciidoc" data-lang="asciidoc">= Blog Title
+:hp-image: https://github.com/&lt;username&gt;/&lt;repositoryName&gt;/images/a-cover-image.jpg</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+HubPressは<code>/images</code>ディレクトリをすべての画像のルートとしているので、あなたがすればよいのは画像のファイル名を記述することだけです。これを踏まえると、あなたは<code>/covers</code>というカバー画像を一括で置いておくためのディレクトリをリポジトリに作成するとよいかもしれません。
+一貫性のあるカバー画像の名前付けのおかげで、投稿にカバー画像を掲載するのも簡単にできます。テーマ画像を設定すれば、読者にブログの内容を視覚的に訴えることができます。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>現在以下のテーマが投稿のカバー画像をサポートしています:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Saga</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="___9">公開日</h5>
+<div class="paragraph">
+<p>公開日はデフォルトで記事を作成した日になります。
+<code>published_at</code> 属性を設定することにより、公開日を指定することができます。</p>
+</div>
+<div class="paragraph">
+<p>例:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-asciidoc" data-lang="asciidoc">= Blog Title
+:published_at: 2015-01-31</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="___10">タグとカテゴリ</h5>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+カテゴリはサポートしていません。
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><code>hp-tags</code> 属性により、タグを複数追加できます。</p>
+</div>
+<div class="paragraph">
+<p>例:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-asciidoc" data-lang="asciidoc">= Blog Title
+:hp-tags: tag1,tag2,tag3</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="__hp_alt_title">代替タイトル指定のための :hp-alt-title:</h5>
+<div class="paragraph">
+<p><code>hp-alt-title</code> 属性を利用して記事に別名タイトルを指定することが出来ます。</p>
+</div>
+<div class="paragraph">
+<p>これはHubPressが生成するHTMLのファイル名になります。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<strong>特に日本語のタイトルはそのままではファイル名がおかしくなるので絶対に指定してください。</strong>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>例:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-asciidoc" data-lang="asciidoc">= 日本語のタイトル
+:hp-alt-title: My English Title</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="___11">画像の追加</h4>
+<div class="sect4">
+<h5 id="_github_push">GitHubリポジトリにpushする</h5>
+<div class="paragraph">
+<p>GitのコマンドラインやGitアプリを使ってブログ投稿に画像を追加できます。</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>画像を<code>images</code>にコミットする</p>
+</li>
+<li>
+<p>ブログ投稿内にAsciiDoc文法に従って:</p>
+</li>
+</ol>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-AsciiDoc" data-lang="AsciiDoc">image::&lt;ファイル名&gt;[]</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>See <a href="http://asciidoctor.org/docs/asciidoc-writers-guide/" class="bare">http://asciidoctor.org/docs/asciidoc-writers-guide/</a> for complex examples of Image syntax.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>もし他所にホストした画像(例えばinstagram, 他のGitHubリポジトリ,あるいはその他の画像ホストサイトなど)を埋め込むには、<code>&lt;ファイル名&gt;</code>に画像への完全なURLを指定してください。</p>
+</div>
+<div class="listingblock">
+<div class="title">Hosted Image Embed</div>
+<div class="content">
+<pre>image::http://&lt;full path to image&gt;[]</pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="__github_issue">画像のホスト先としてGitHub issueを利用する</h5>
+<div class="paragraph">
+<p>ひとつのissueにコメントで残していくような方法でブログ用の画像を用意したり、反対にたくさんのissueを作って画像を個別に管理することもできます。あなたにとって、あるいはあなたの組織にそってベストなやり方が選べます。
+5分間のデモビデオを用意してあります。GitHub Issuesなどのクラウドホスティングサービスで画像を埋め込む方法とAsciiDocで画像を取り扱う方法がわかります。
+<a href="https://www.youtube.com/watch?v=KoaGU91qJv8" class="bare">https://www.youtube.com/watch?v=KoaGU91qJv8</a></p>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="___12">動画の埋め込み</h4>
+<div class="paragraph">
+<p>HubPressでは、ブログ記事内で簡単な記述で動画を埋め込むことが出来ます。動画への完全なURLは必要ありません。必要なのは動画固有のIDだけです。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>video::[unique_youtube_video_id][youtube | vimeo]</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">YouTube動画の埋め込み</div>
+<div class="content">
+<pre class="highlight"><code>video::KCylB780zSM[youtube]</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Vimeo動画の埋め込み</div>
+<div class="content">
+<pre class="highlight"><code>video::67480300[vimeo]</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_hubpress_4">HubPressのアップデート</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>HubPressはGitHubにホストされているので、HubPressのmasterリポジトリから最新の変更をpullするだけでアップデートできます。</p>
+</div>
+<div class="paragraph">
+<p>初めてですか？次の動画で(コマンドライン操作を必要としない)簡単で正しい方法を学びましょう。(もちろんコマンドラインからでも問題ありません。)</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.youtube.com/watch?v=KCylB780zSM" class="bare">https://www.youtube.com/watch?v=KCylB780zSM</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_troubleshooting">Troubleshooting</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>何かうまくいかないことがあったら、以下のTipsをご参照ください。</p>
+</div>
+<div class="sect2">
+<h3 id="_resetting_blog_database_on_android">Resetting Blog Database on Android</h3>
+<div class="paragraph">
+<p>ときどきHubPressのLocalのデータベースが公開済みのブログのデータと同期されないことがあります。これはPCからブログを書いて、作業をタブレットに引き継ごうとしたときに発生します。</p>
+</div>
+<div class="paragraph">
+<p>HubPressはブラウザに結びついたデータベース上で動作しています。デバイスを変更すると、ブラウザも変更されるため、同期がされなくなるということです。</p>
+</div>
+<div class="paragraph">
+<p>この問題を解消するためには、設定&#8594;(詳細設定)プライバシー&#8594;閲覧履歴データを消去するのボタンからキャッシュを選び削除してください。</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_credits">Credits</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Thanks to <a href="https://github.com/jaredmorgs">Jared Morgan</a> for initially tidying up the README you see here, and continuing to be the "docs guy" for HubPress.</p>
+</div>
+<div class="paragraph">
+<p>日本語訳: <a href="https://github.com/takkyuuplayer/">takkyuuplayer</a>, <a href="https://github.com/hinaloe">hinaloe</a></p>
+</div>
+</div>
+</div>
+                        <aside class="tags fi-pricetag-multiple">No tag</aside>
+            </section>
+            <hr>
+            <footer class="post-footer">
+
+                <section class="share">
+                    <h4>Liked this post ? Share it.</h4>
+                    <a class="fi-social-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://innovation-yagasaki.github.io/2016/03/10/Hub-Press.html"
+                        onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    </a>
+                    <a class="fi-social-twitter" href="https://twitter.com/share?text=HubPress&amp;url=https://innovation-yagasaki.github.io/2016/03/10/Hub-Press.html"
+                        onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    </a>
+                    <a class="fi-social-google-plus" href="https://plus.google.com/share?url=https://innovation-yagasaki.github.io/2016/03/10/Hub-Press.html"
+                       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    </a>
+                </section>
+
+                <section class="author">
+                    <header>
+                        <span>About the author</span>
+                    </header>
+                    <section>
+                        <h4></h4>
+                        <img src="https://avatars.githubusercontent.com/u/13131599?v=3">
+                        
+                        
+                    </section>
+                    <footer>
+                         <p></p>
+                    </footer>
+                </section>
+
+        <div class="clearfix"></div>
+                    <hr>
+
+            </footer>
+
+        <h3 class="title-disqus"><span class="fi-comments"></span>Discussions</h3>
+
+
+
+
+    </article>
+
+</main>
+
+</div>
+
+</div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js?v="></script> <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js?v="></script> 
+      <script type="text/javascript">
+        jQuery( document ).ready(function() {
+          // change date with ago
+          jQuery('ago.ago').each(function(){
+            var element = jQuery(this).parent();
+            element.html( moment(element.text()).fromNow());
+          });
+        });
+
+        hljs.initHighlightingOnLoad();      
+      </script>
+
+    <!--[if lte IE 8]>
+        <script type="text/javascript" src="//innovation-yagasaki.github.io/themes/ichi/assets/js/outdatedBrowser.min.js?v=1.0.0"></script>
+    <![endif]-->
+    <script type="text/javascript" src="//innovation-yagasaki.github.io/themes/ichi/assets/js/min/built.js?v=1.0.0"></script>
+
+    <script>
+      $(document).foundation();
+    </script>
+
+</body>
+</html>
